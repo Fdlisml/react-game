@@ -1,13 +1,13 @@
-import { Container, Row, Col, Image, Card } from "react-bootstrap";
-import NavigationBar from "./NavigationBar";
-import SearchInput from "./SearchInput";
+import { Container, Row } from "react-bootstrap";
+import SearchInput from "../partials/SearchInput";
+import Cards from "../partials/Cards";
 
-import minecraftImage from "../assets/trending/minecraft.jpg";
-import farcryImage from "../assets/trending/farCry6.jpg";
-import lolImage from "../assets/trending/lol.jpg";
-import olliworldImage from "../assets/trending/olliworld.jpg";
-import valorantImage from "../assets/trending/valorant.jpg";
-import wowImage from "../assets/trending/wow.jpg";
+import olliworldImage from "../../assets/trending/olliworld.jpg";
+import minecraftImage from "../../assets/trending/minecraft.jpg";
+import valorantImage from "../../assets/trending/valorant.jpg";
+import farcryImage from "../../assets/trending/farCry6.jpg";
+import lolImage from "../../assets/trending/lol.jpg";
+import wowImage from "../../assets/trending/wow.jpg";
 
 import { useState } from 'react';
 
@@ -48,55 +48,36 @@ const trendingGamesData = [
       title: "World of Warcraft",
       description: "Set in the fictional world of Azeroth, WoW allows players to create avatar-style characters and explore a sprawling universe while interacting with nonreal players—called nonplayer characters (NPCs)—and other real-world players (PCs).",
       lastUpdated: "Last updated 3 mins ago",
-   },
+   }
 ];
 
-const filterImages = (images, searchText) => {
-   return images.filter(image => {
-      const imageTitle = image.title.toLowerCase();
+const searchGames = (games, searchText) => {
+   return games.filter(game => {
+      const gameTitle = game.title.toLowerCase();
       const searchLowerCase = searchText.toLowerCase();
-      return imageTitle.includes(searchLowerCase);
+      return gameTitle.includes(searchLowerCase);
    });
 };
 
 const TrendingGame = () => {
    const [searchText, setSearchText] = useState('');
-   const filteredGames = filterImages(trendingGamesData, searchText);
+   const searchedGames = searchGames(trendingGamesData, searchText);
    return (
       <div className="trending">
-         <NavigationBar />
-         <Container>
+         <Container style={{ paddingTop: '50px' }}>
             <br />
             <h1 className="text-white text-center" id="trending">
                TRENDING GAMES
             </h1>
             <br />
-            {/* Search input */}
             <SearchInput
                value={searchText}
                onChange={(newText) => setSearchText(newText)}
             />
             <Row>
-               {filteredGames.map((game, index) => (
-                  <Col md={4} key={index}>
-                     <Card className="gameImage">
-                        <Image src={game.image} className="images" />
-                        <div className="bg-dark">
-                           <div className="p-2 m-1 text-white">
-                              <Card.Title className="text-center">
-                                 {game.title}
-                              </Card.Title>
-                              <Card.Text className="text-left">
-                                 {game.description}
-                              </Card.Text>
-                              <Card.Text className="text-left">
-                                 {game.lastUpdated}
-                              </Card.Text>
-                           </div>
-                        </div>
-                     </Card>
-                  </Col>
-               ))}
+            <Cards
+                  games={searchedGames}
+                  emptyHeading={`No matches for "${searchText}"`} />
             </Row>
          </Container>
       </div>

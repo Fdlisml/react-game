@@ -1,11 +1,9 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import NavigationBar from "./NavigationBar";
 
-const Intro = () => {
+const Home = () => {
    return (
       <div className="myBG">
-         <NavigationBar />
          <div className="intro">
             <Container className="text-white text-center d-flex justify-content-center align-items-center">
                <Row>
@@ -23,4 +21,4 @@ const Intro = () => {
    );
 };
 
-export default Intro;
+export default Home;

@@ -1,13 +1,13 @@
-import { Container, Row, Col, Image, Card } from "react-bootstrap";
-import NavigationBar from "./NavigationBar";
-import SearchInput from "./SearchInput";
+import { Container, Row } from "react-bootstrap";
+import SearchInput from "../partials/SearchInput";
+import Cards from "../partials/Cards";
 
-import back4bloodImage from "../assets/best/back4blood.jpg";
-import crysis3Image from "../assets/best/crysis3.jpg";
-import residentEvil12Image from "../assets/best/residentEvil2.jpg";
-import theWalkingDeadImage from "../assets/best/theWalkingDead.jpg";
-import thiefImage from "../assets/best/thief.jpg";
-import untilDawnImage from "../assets/best/untilDawn.jpg";
+import theWalkingDeadImage from "../../assets/best/theWalkingDead.jpg";
+import residentEvil12Image from "../../assets/best/residentEvil2.jpg";
+import back4bloodImage from "../../assets/best/back4blood.jpg";
+import untilDawnImage from "../../assets/best/untilDawn.jpg";
+import crysis3Image from "../../assets/best/crysis3.jpg";
+import thiefImage from "../../assets/best/thief.jpg";
 
 
 import { useState } from 'react';
@@ -54,55 +54,36 @@ const bestGamesData = [
       desciption:
          "Back 4 Blood is a thrilling cooperative first-person shooter from the creators of the critically acclaimed Left 4 Dead franchise. You are at the center of a war against the Ridden. These once-human hosts of a deadly parasite have turned into terrifying creatures bent on devouring what remains of civilization.",
       lastUpdated: "Last updated 3 mins ago",
-   },
+   }
 ];
 
-const filterImages = (images, searchText) => {
-   return images.filter(image => {
-      const imageTitle = image.title.toLowerCase();
+const searchGames = (games, searchText) => {
+   return games.filter(game => {
+      const gameTitle = game.title.toLowerCase();
       const searchLowerCase = searchText.toLowerCase();
-      return imageTitle.includes(searchLowerCase);
+      return gameTitle.includes(searchLowerCase);
    });
 };
 
 const BestGame = () => {
    const [searchText, setSearchText] = useState('');
-   const filteredGames = filterImages(bestGamesData, searchText);
+   const searchedGames = searchGames(bestGamesData, searchText);
    return (
       <div className="best">
-         <NavigationBar />
-         <Container>
+         <Container style={{ paddingTop: '50px' }}>
             <br />
             <h1 className="text-white text-center" id="best">
                BEST GAMES
             </h1>
             <br />
-            {/* Search input */}
             <SearchInput
                value={searchText}
                onChange={(newText) => setSearchText(newText)}
             />
             <Row>
-               {filteredGames.map((game, index) => (
-                  <Col md={4} key={index}>
-                     <Card className="gameImage">
-                        <Image src={game.image} className="images" />
-                        <div className="bg-dark">
-                           <div className="p-2 m-1 text-white">
-                              <Card.Title className="text-center">
-                                 {game.title}
-                              </Card.Title>
-                              <Card.Text className="text-left">
-                                 {game.desciption}
-                              </Card.Text>
-                              <Card.Text className="text-left">
-                                 {game.lastUpdated}
-                              </Card.Text>
-                           </div>
-                        </div>
-                     </Card>
-                  </Col>
-               ))}
+               <Cards
+                  games={searchedGames}
+                  emptyHeading={`No matches for "${searchText}"`} />
             </Row>
          </Container>
       </div>
