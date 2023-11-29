@@ -1,11 +1,13 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import backgroundImg from '../../assets/bg/bg2.jpg';
 
 const Home = () => {
    return (
       <div className="myBG">
+         <img src={backgroundImg} alt="" className="background-img"/>
          <div className="intro">
-            <Container className="text-white text-center d-flex justify-content-center align-items-center">
+            <Container className="text-white text-center d-flex justify-content-center align-items-center text-wrap">
                <Row>
                   <Col>
                      <div className="title">ON TARGET</div>

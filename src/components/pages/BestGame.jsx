@@ -1,61 +1,9 @@
 import { Container, Row } from "react-bootstrap";
+import { useState } from 'react';
 import SearchInput from "../partials/SearchInput";
 import Cards from "../partials/Cards";
 
-import theWalkingDeadImage from "../../assets/best/theWalkingDead.jpg";
-import residentEvil12Image from "../../assets/best/residentEvil2.jpg";
-import back4bloodImage from "../../assets/best/back4blood.jpg";
-import untilDawnImage from "../../assets/best/untilDawn.jpg";
-import crysis3Image from "../../assets/best/crysis3.jpg";
-import thiefImage from "../../assets/best/thief.jpg";
-
-
-import { useState } from 'react';
-
-const bestGamesData = [
-   {
-      image: back4bloodImage,
-      title: "Back 4 Blood",
-      desciption:
-         "Back 4 Blood is a thrilling cooperative first-person shooter from the creators of the critically acclaimed Left 4 Dead franchise. You are at the center of a war against the Ridden. These once-human hosts of a deadly parasite have turned into terrifying creatures bent on devouring what remains of civilization.",
-      lastUpdated: "Last updated 3 mins ago",
-   },
-   {
-      image: crysis3Image,
-      title: "Crysis 3",
-      desciption:
-         "Similar to the earlier games in the Crysis series, Crysis 3 is a first-person shooter. Players take control of Prophet as he progresses through New York City to defeat the Ceph, a technologically advanced alien race. Throughout the game, players can slide, sprint, jump and crouch.",
-      lastUpdated: "Last updated 3 mins ago",
-   },
-   {
-      image: residentEvil12Image,
-      title: "Resident Evil 12",
-      desciption:
-         "Resident Evil, or Biohazard in Japan and Southeast Asia, is a Japanese horror game media franchise created by Capcom. It consists of survival horror, third-person shooter and first-person shooter games, with players typically surviving in environments inhabited by zombies and other frightening creatures.",
-      lastUpdated: "Last updated 3 mins ago",
-   },
-   {
-      image: theWalkingDeadImage,
-      title: "The Walking Dead",
-      desciption:
-         "The Walking Dead is a graphic adventure, played from a third-person perspective with a variety of cinematic camera angles, in which the player, as protagonist Lee Everett, works with a rag-tag group of survivors to stay alive in the midst of a zombie apocalypse.",
-      lastUpdated: "Last updated 3 mins ago",
-   },
-   {
-      image: thiefImage,
-      title: "Thief",
-      desciption:
-         "Back 4 Blood is a thrilling cooperative first-person shooter from the creators of the critically acclaimed Left 4 Dead franchise. You are at the center of a war against the Ridden. These once-human hosts of a deadly parasite have turned into terrifying creatures bent on devouring what remains of civilization.",
-      lastUpdated: "Last updated 3 mins ago",
-   },
-   {
-      image: untilDawnImage,
-      title: "Until Dawn",
-      desciption:
-         "Back 4 Blood is a thrilling cooperative first-person shooter from the creators of the critically acclaimed Left 4 Dead franchise. You are at the center of a war against the Ridden. These once-human hosts of a deadly parasite have turned into terrifying creatures bent on devouring what remains of civilization.",
-      lastUpdated: "Last updated 3 mins ago",
-   }
-];
+import gamesData from "../data/gamesData";
 
 const searchGames = (games, searchText) => {
    return games.filter(game => {
@@ -67,6 +15,7 @@ const searchGames = (games, searchText) => {
 
 const BestGame = () => {
    const [searchText, setSearchText] = useState('');
+   const bestGamesData = gamesData.filter((game) => game.status === 'best');
    const searchedGames = searchGames(bestGamesData, searchText);
    return (
       <div className="best">

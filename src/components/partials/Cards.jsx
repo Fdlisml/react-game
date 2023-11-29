@@ -15,11 +15,11 @@ export default function Cards({games, emptyHeading}) {
                               {game.title}
                            </Card.Title>
                            <Card.Text className="text-left">
-                              {game.desciption}
+                              {game.description}
                            </Card.Text>
-                           <Card.Text className="text-left">
+                           <Card.Footer className="text-left">
                               {game.lastUpdated}
-                           </Card.Text>
+                           </Card.Footer>
                         </div>
                      </div>
                   </Card>
