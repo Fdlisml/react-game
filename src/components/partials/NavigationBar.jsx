@@ -1,5 +1,6 @@
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, Image } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
+import Logo from '../../assets/logo.png'
 
 function NavigationBar() {
   const location = useLocation();
@@ -15,7 +16,10 @@ function NavigationBar() {
         fixed="top"
       >
         <Container fluid>
-          <Navbar.Brand as={Link} to="/">GameHolic</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            <Image src={Logo} style={{ width: '50px' }} />
+            GAMES
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse
             id="responsive-navbar-nav"

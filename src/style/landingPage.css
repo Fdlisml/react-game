@@ -10,22 +10,24 @@
    object-fit: cover;
    position: absolute;
    z-index: -1;
-   filter: brightness(50%);  
+   filter: brightness(40%);  
+   image-rendering: pixelated;
 }
-
 
 .intro {
    height: 300px;
    display: flex;
    justify-content: flex-end;
    align-items: flex-end;
+   position: absolute;
+   left: 32px;
 }
 
 .title {
+   text-align: left;
    font-size: 3rem;
    font-weight: 800;
    line-height: 1;
-   text-shadow: 2px 2px black;
    letter-spacing: 4px;
    margin-bottom: 20px;
 }
@@ -58,3 +60,4 @@
 .images {
    height: 500px;
 }
+
