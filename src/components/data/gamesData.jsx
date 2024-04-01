@@ -13,6 +13,7 @@ import wowImage from "../../assets/trending/wow.jpg";
 
 const gamesData = [
   {
+    id : 1,
     image: back4bloodImage,
     title: "Back 4 Blood",
     description:
@@ -21,6 +22,7 @@ const gamesData = [
     status: "best",
   },
   {
+    id : 2,
     image: crysis3Image,
     title: "Crysis 3",
     description:
@@ -29,6 +31,7 @@ const gamesData = [
     status: "best",
   },
   {
+    id : 3,
     image: residentEvil12Image,
     title: "Resident Evil 12",
     description:
@@ -37,6 +40,7 @@ const gamesData = [
     status: "best",
   },
   {
+    id : 4,
     image: theWalkingDeadImage,
     title: "The Walking Dead",
     description:
@@ -45,6 +49,7 @@ const gamesData = [
     status: "best",
   },
   {
+    id : 5,
     image: thiefImage,
     title: "Thief",
     description:
@@ -53,6 +58,7 @@ const gamesData = [
     status: "best",
   },
   {
+    id : 6,
     image: untilDawnImage,
     title: "Until Dawn",
     description:
@@ -61,6 +67,7 @@ const gamesData = [
     status: "best",
   },
   {
+    id : 7,
     image: minecraftImage,
     title: "Minecraft",
     description:
@@ -69,6 +76,7 @@ const gamesData = [
     status: "trending",
   },
   {
+    id : 8,
     image: farcryImage,
     title: "Far Cry 6",
     description:
@@ -77,6 +85,7 @@ const gamesData = [
     status: "trending",
   },
   {
+    id : 9,
     image: lolImage,
     title: "League of Legends",
     description:
@@ -85,6 +94,7 @@ const gamesData = [
     status: "trending",
   },
   {
+    id : 10,
     image: olliworldImage,
     title: "OlliOlli World",
     description:
@@ -93,6 +103,7 @@ const gamesData = [
     status: "trending",
   },
   {
+    id : 11,
     image: valorantImage,
     title: "Valorant",
     description:
@@ -101,6 +112,7 @@ const gamesData = [
     status: "trending",
   },
   {
+    id : 12,
     image: wowImage,
     title: "World of Warcraft",
     description:

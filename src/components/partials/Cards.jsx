@@ -1,23 +1,31 @@
 import React from 'react';
-import { Col, Card, Image } from "react-bootstrap";
+import { Col, Card, Button } from "react-bootstrap";
 
-export default function Cards({games, emptyHeading}) {
+export default function Cards({ games, emptyHeading, handleShow }) {
    return (
       <>
          {games.length > 0 ? (
             games.map((game, index) => (
                <Col md={4} key={index}>
                   <Card className="gameImage">
-                     <Image src={game.image} className="images" />
+                     <Card.Img variant="top" src={game.image} className="images" />
                      <div className="bg-dark">
                         <div className="p-2 m-1 text-white">
-                           <Card.Title className="text-center">
-                              {game.title}
-                           </Card.Title>
-                           <Card.Text className="text-left">
-                              {game.description}
-                           </Card.Text>
-                           <Card.Footer className="text-left">
+                           <Card.Body>
+                              <Card.Title>
+                                 {game.title}
+                              </Card.Title>
+                              <Card.Text className="text-left">
+                                 {game.description}
+                              </Card.Text>
+                              <Button
+                                 variant="primary"
+                                 onClick={() => handleShow(game.id)}
+                              >
+                                 See More...
+                              </Button>
+                           </Card.Body>
+                           <Card.Footer className="">
                               {game.lastUpdated}
                            </Card.Footer>
                         </div>

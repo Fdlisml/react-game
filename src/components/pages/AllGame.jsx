@@ -2,7 +2,7 @@ import { Container, Row } from "react-bootstrap";
 import { useState } from "react";
 import SearchInput from "../partials/SearchInput";
 import Cards from "../partials/Cards";
-import Modal from "../partials/Modal";
+import Modals from "../partials/Modals";
 
 import allGameData from "../data/gamesData";
 
@@ -14,13 +14,26 @@ const searchGames = (games, searchText) => {
   });
 };
 
-const AllGame = () => {
+export default function AllGame() {
+  const [show, setShow] = useState(false);
+  const [selectedGame, setSelectedGame] = useState(null);
+  const handleClose = () => setShow(false);
+  const handleShow = (gameId) => {
+    setShow(true);
+    const game = allGameData.find((game) => game.id === gameId);
+    setSelectedGame(game);
+  }
+
   const [searchText, setSearchText] = useState("");
   const searchedGames = searchGames(allGameData, searchText);
   return (
     <div className="all-game">
       <Container style={{ paddingTop: "50px" }}>
-        <Modal />
+        <Modals
+          show={show}
+          handleClose={handleClose}
+          selectedGame={selectedGame}
+        />
         <br />
         <h1 className="text-white text-center" id="all-game">
           All Game
@@ -32,6 +45,7 @@ const AllGame = () => {
         />
         <Row>
           <Cards
+            handleShow={handleShow}
             games={searchedGames}
             emptyHeading={`No matches for "${searchText}"`}
           />
@@ -40,5 +54,3 @@ const AllGame = () => {
     </div>
   );
 };
-
-export default AllGame;
